@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="header">
+        <h1>🌤️ Weather Dashboard</h1>
+        <p>Real-time weather data with translations</p>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Search for a city..." />
+            <button id="searchBtn" class="btn btn-primary">Search</button>
+        </div>
+        <button id="locationBtn" class="btn btn-secondary">📍 Use My Location</button>
+    </div>
+
+    <!-- API Key Setup -->
+    <div class="api-setup">
+        <p>⚠️ Add your free OpenWeatherMap API key:</p>
+        <input type="text" id="apiKey" placeholder="Enter your API key from openweathermap.org" />
+        <button id="saveApiKey" class="btn btn-small">Save API Key</button>
+        <small>Get your free key at <a href="https://openweathermap.org/api" target="_blank">openweathermap.org/api</a></small>
+    </div>
+
+    <!-- Main Weather Display -->
+    <div id="weatherContainer" class="weather-container hidden">
+        <!-- Current Weather -->
+        <div class="current-weather">
+            <div class="weather-main">
+                <h2 id="cityName"></h2>
+                <div class="weather-icon-large">
+                    <img id="weatherIcon" src="" alt="Weather" />
+                </div>
+                <div class="temperature-display">
+                    <span id="temperature" class="temp"></span>
+                    <span class="unit">°C</span>
+                </div>
+                <p id="weatherDescription" class="description"></p>
+                <p id="feelsLike" class="feels-like"></p>
+            </div>
+
+            <!-- Weather Details Grid -->
+            <div class="weather-details">
+                <div class="detail-card">
+                    <span class="label">Humidity</span>
+                    <span id="humidity" class="value"></span>
+                </div>
+                <div class="detail-card">
+                    <span class="label">Wind Speed</span>
+                    <span id="windSpeed" class="value"></span>
+                </div>
+                <div class="detail-card">
+                    <span class="label">Pressure</span>
+                    <span id="pressure" class="value"></span>
+                </div>
+                <div class="detail-card">
+                    <span class="label">Visibility</span>
+                    <span id="visibility" class="value"></span>
+                </div>
+                <div class="detail-card">
+                    <span class="label">UV Index</span>
+                    <span id="uvi" class="value"></span>
+                </div>
+                <div class="detail-card">
+                    <span class="label">Sunrise</span>
+                    <span id="sunrise" class="value"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Translation Section -->
+        <div class="translation-section">
+            <h3>📖 Word-for-Word Translation</h3>
+            <div class="translation-inputs">
+                <div class="input-group">
+                    <label for="englishWeather">English Weather Description:</label>
+                    <textarea id="englishWeather" placeholder="Weather description will appear here..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="germanWeather">German Word-for-Word Translation:</label>
+                    <textarea id="germanWeather" placeholder="Add German word-for-word translation..."></textarea>
+                </div>
+            </div>
+            <button id="decodeWeatherBtn" class="btn btn-primary">Decode Translation</button>
+        </div>
+
+        <!-- Decoded Translation Display -->
+        <div id="decodedOutput" class="decoded-output hidden">
+            <h3>Decoded Weather Translation:</h3>
+            <div class="output-container" id="translationOutput"></div>
+        </div>
+
+        <!-- Hourly Forecast -->
+        <div class="forecast-section">
+            <h3>⏰ Hourly Forecast (Next 24 Hours)</h3>
+            <div id="hourlyForecast" class="hourly-forecast"></div>
+        </div>
+
+        <!-- Daily Forecast -->
+        <div class="forecast-section">
+            <h3>📅 5-Day Forecast</h3>
+            <div id="dailyForecast" class="daily-forecast"></div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Loading weather data...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error hidden"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
